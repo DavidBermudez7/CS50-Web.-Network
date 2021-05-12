@@ -18,14 +18,17 @@ class Likes(models.Model):
     user = models.ForeignKey(User, on_delete= models.CASCADE)
     date = models.DateField(auto_now_add=True)
     
- 
+
 class Followers(models.Model):
     id = models.AutoField(primary_key=True)
-    user = models.ForeignKey(User, on_delete= models.CASCADE)
-    followed-user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete= models.CASCADE, related_name="main_user")
+    followed_user = models.ForeignKey(User, on_delete= models.CASCADE, related_name="followed_user")
+    
        
 
 """
+
+
     
     #Calcular following 
     
