@@ -4,23 +4,8 @@ from django.db import models
 
 
 class User(AbstractUser):
-    
-    following = strings = JSONField(default=list, blank=True, null=True)
-    
-    """
-    - Following: Array
-    - Followers: ??? 
-        - La interración de followers se realiza por otra persona que da a seguir a este.
-          Esto genera que de singuna de las maneras sea posible que el usuario al que están siguiendo sea capaz de añadir este seguidor a su base de datos.
-          Por tanto la opción más lógica sería hacer una query a la database y preguntarle cuantos seguidores te usuario tiene. 
-          Después podemos pasar esto como parámetro a la vista y usar el argumento count. 
-          
-
-    """
     pass
 
-
-#Post
 
 class Post(models.Model):
     id = models.AutoField(primary_key=True)
@@ -28,41 +13,46 @@ class Post(models.Model):
     text = models.CharField(max_length=140, null=False)
     date = models.DateTimeField(auto_now_add=True)
     
-class Likes(models.Model)
+class Likes(models.Model):
     id = models.AutoField(primary_key=True)
     user = models.ForeignKey(User, on_delete= models.CASCADE)
     date = models.DateField(auto_now_add=True)
-
-
-"""
-
-    USER:
-        - CORREO
-        - PASSWORD
-        - CONTRASEÑA
-        - ID
     
-    POST:
-        - USUARIO
-        - ID
-        - TEXTO 
-        - FECHA 
-        
-        
-    LIKES: 
-        - POST 
-        - USUARIO 
-        - DATE
-        
-"""
-
-
+ 
+class Followers(models.Model):
+    id = models.AutoField(primary_key=True)
+    user = models.ForeignKey(User, on_delete= models.CASCADE)
+    followed-user = models.ForeignKey(User, on_delete=models.CASCADE)
+       
 
 """
-    #LOS MUESTRA EN LA FOTO PERO NO DICE NADA DE ELLOS EN LAS ESPECIFICACIONES SO??
-    COMMENTS:
     
-        - POST 
-        - USUARIO 
-        - DATE 
-"""
+    #Calcular following 
+    
+    following = []
+    
+    for i in range(len(Followers)):
+        
+        if Followers[i].user == A:
+            following.append(Followers[i])
+        
+        
+    
+    User: A
+    Followed-user: B
+    
+    Con esto ya sabemos que el usuario A sigue al usuario B
+    
+    
+    #Calcular followers 
+    
+    followers_array = []
+    
+    for i in range(len(Followers)):
+        
+        if Followers[i].Followed-user == A:
+            followers_array.append(Followers[i])
+    
+ 
+
+    """
