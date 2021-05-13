@@ -61,3 +61,8 @@ def register(request):
         return HttpResponseRedirect(reverse("index"))
     else:
         return render(request, "network/register.html")
+
+#Hacer las funciones que envien los datos a las vistas. 
+
+#Hacer las funciones que procesen las fetch request 
+

@@ -1,5 +1,42 @@
 {% extends "network/layout.html" %}
+{% load static %}
 
 {% block body %}
-    TODO
+
+    <h1>All Posts</h1>
+    <!--Esto es una página renderizada por Django así que podemos hacer la primera carga de datos sin tenernos que preocupar mucho por ella-->
+
+
+    <!-- Lo primero de todo es añadir una verificación para que el usuario no pueda crear un post sino está registrado. -->
+
+    <div id="new-post-div">
+
+        {% if user.is_authenticated  %}
+
+            <h4>New Post</h4>
+            <textarea></textarea>
+            <button id="post-button"></button>
+    
+        {% endif %}
+    </div>
+
+    {% for post in posts %}
+        <div id="all-post-div">
+
+            <h6>{{user.username}}</h6>
+            <button id="edit_button">Edit</button>
+            <p>{{text}}</p>
+            <small>{{date}}</small>
+             <button id="like_button">Like</button>
+            <button id="comment_button">Comment</button>
+
+        </div>
+    {% endfor %}
+
+     <button id="edit_button">Next</button>    
+
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'network/inbox.js' %}"></script>
 {% endblock %}
