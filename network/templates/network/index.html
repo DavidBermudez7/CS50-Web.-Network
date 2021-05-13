@@ -14,8 +14,8 @@
         {% if user.is_authenticated  %}
 
             <h4>New Post</h4>
-            <textarea></textarea>
-            <button id="post-button"></button>
+            <textarea id="new-post-textarea"></textarea>
+            <button id="post-button">Post</button>
     
         {% endif %}
     </div>
@@ -33,7 +33,9 @@
         </div>
     {% endfor %}
 
-     <button id="edit_button">Next</button>    
+    <!--
+    <button id="edit_button">Next</button>
+    -->
 
 {% endblock %}
 
