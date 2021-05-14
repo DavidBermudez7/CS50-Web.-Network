@@ -32,7 +32,7 @@ p {
     padding: 2%;
 }
 
-#edit_button {
+.link_style_button {
     background: none!important;
     border: none;
     padding: 0!important;
@@ -43,7 +43,7 @@ p {
     cursor: pointer;
 }
 
-#edit_button:hover {
+.link_style_button:hover {
     text-decoration: underline;
 }
 
