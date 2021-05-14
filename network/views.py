@@ -9,11 +9,15 @@ from django import forms
 from .models import Post, User
 
 class New_post_form(forms.Form):
-    post_text = forms.CharField(label='', widget=forms.TextInput(attrs={'placeholder': 'Text'}), required=True)
+    post_text = forms.CharField(label='', widget=forms.Textarea(attrs={'placeholder': 'Text', 'id': 'post-form', "rows":3, "cols":20}), required=True)
 
 
 def index(request):
-    return render(request, "network/index.html")
+    posts = Post.objects.all()
+
+    return render(request, "network/index.html", {
+        "posts": posts
+    })
 
 
 def login_view(request):
