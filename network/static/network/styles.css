@@ -2,9 +2,6 @@ h1 {
     margin-left: 1.5%;
 }
 
-h4 {
-    margin-left: 6%;
-}
 
 p {
     overflow-wrap: break-word;
@@ -46,8 +43,6 @@ p {
 .link_style_button:hover {
     text-decoration: underline;
 }
-
-
 
 
 #post-form {

@@ -12,11 +12,13 @@
     {% for post in posts %}
         <div id="all-post-div">
 
-            <h6>{{user.username}}</h6>
+            <h4>{{user.username}}</h4>
             <button id="edit_button" class="link_style_button">Edit</button>
             <p>{{post.text}}</p>
-            <small>{{date}}</small>
+            <small>{{post.date}}</small>
+            <br>
              <button id="like_button" class="link_style_button">Like</button>
+             <br>
             <button id="comment_button" class="link_style_button">Comment</button>
 
         </div>
