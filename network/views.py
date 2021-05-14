@@ -1,10 +1,15 @@
+from typing import Text
 from django.contrib.auth import authenticate, login, logout
 from django.db import IntegrityError
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
+from django import forms
 
-from .models import User
+from .models import Post, User
+
+class New_post_form(forms.Form):
+    post_text = forms.CharField(label='', widget=forms.TextInput(attrs={'placeholder': 'Text'}), required=True)
 
 
 def index(request):
@@ -66,3 +71,35 @@ def register(request):
 
 #Hacer las funciones que procesen las fetch request 
 
+def new_post_view(request):
+    
+    if request.method == "GET":
+        
+        #Cambiar el index
+        return render(request, "network/new_post.html", {
+            "form": New_post_form()
+        })
+    
+    elif request.method == "POST":
+        
+        if request.user.is_authenticated:
+                            
+            form = New_post_form(request.POST)
+            
+            if form.is_valid():
+                
+                post_text = form.cleaned_data["post_text"]
+                
+            
+                new_post = Post.objects.create(
+                    user = request.user,
+                    text = post_text
+                    
+                )
+                
+                new_post.save()
+                
+                return HttpResponseRedirect(reverse("index"))
+        else:
+            pass
+        

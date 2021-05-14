@@ -9,17 +9,6 @@
 
     <!-- Lo primero de todo es añadir una verificación para que el usuario no pueda crear un post sino está registrado. -->
 
-    <div id="new-post-div">
-
-        {% if user.is_authenticated  %}
-
-            <h4>New Post</h4>
-            <textarea id="new-post-textarea"></textarea>
-            <button id="post-button">Post</button>
-    
-        {% endif %}
-    </div>
-
     {% for post in posts %}
         <div id="all-post-div">
 
